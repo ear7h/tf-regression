@@ -28,6 +28,8 @@ x = tf.placeholder(tf.float32, shape=[None, 1])
 # correct answer
 y_label = tf.placeholder(tf.float32, shape=[None, 1])
 
+# slope and y intercept
+# these values are the ones being "learned"
 m = tf.Variable(tf.random_normal([1, 1]), dtype=tf.float32)
 b = tf.Variable(tf.random_normal([1, 1]), dtype=tf.float32)
 
@@ -37,6 +39,7 @@ y = tf.add(tf.matmul(x, m), b)
 
 # error calculation
 error = tf.reduce_mean(tf.square(y_label - y))
+
 # training function
 train = tf.train.GradientDescentOptimizer(learn_rate).minimize(error)
 
